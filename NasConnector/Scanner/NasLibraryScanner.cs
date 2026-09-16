@@ -73,7 +73,10 @@ namespace NasConnector
                 CancellationToken = cancelToken
             };
 
-            Parallel.ForEach(Directory.GetDirectories(settings.NasBasePath), options, dir =>
+            Parallel.ForEach(
+    Directory.GetDirectories(settings.NasBasePath, "*", SearchOption.AllDirectories), 
+    options, 
+    dir =>
             {
                 try
                 {
